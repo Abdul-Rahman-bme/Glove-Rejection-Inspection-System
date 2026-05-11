@@ -1,4 +1,4 @@
-# 🧤 GRIP — Glove Rejection and Inspection Process
+# 🧤 GRIP - Glove Rejection and Inspection Process
 
 <div align="center">
 
@@ -89,7 +89,7 @@ For each tracked glove:
 │     └── → PICK_LABEL_DEFECT → defect bin
 │
 └── All checks pass?
-      └── → PASS — left on belt ✅
+      └── → PASS - left on belt ✅
 ```
 
 ### Confidence Thresholds
@@ -224,7 +224,7 @@ palm_x  = mean(kpts[5][0], kpts[9][0], kpts[13][0], kpts[17][0])
 # ⚠️ VERIFY THIS WITH 10 KNOWN LEFT + 10 KNOWN RIGHT GLOVES
 # The correct mapping depends on camera orientation + palm face direction
 if thumb_x < palm_x:
-    handedness = "right_glove"   # or left — CONFIRM BEFORE HARDCODING
+    handedness = "right_glove"   # or left - CONFIRM BEFORE HARDCODING
 else:
     handedness = "left_glove"
 ```
@@ -250,22 +250,22 @@ label_roi (cropped wrist area)
 
 ### 📦 Dataset Collection
 
-- [x] Left glove detection dataset — 302 images *(completed)*
-- [x] Right glove dataset — 255 images *(completed)*
-- [x] Merged dataset — 495 train + 119 val *(completed)*
-- [ ] Landmark annotation dataset — target 250–300 cropped gloves
-- [ ] Label defect dataset — target 150 defect + 150 non-defect ROI crops
-- [ ] Size dataset — S/M/L/XL known samples *(future — do not rush)*
+- [x] Left glove detection dataset - 302 images *(completed)*
+- [x] Right glove dataset - 255 images *(completed)*
+- [x] Merged dataset - 495 train + 119 val *(completed)*
+- [ ] Landmark annotation dataset - target 250–300 cropped gloves
+- [ ] Label defect dataset - target 150 defect + 150 non-defect ROI crops
+- [ ] Size dataset - S/M/L/XL known samples *(future - do not rush)*
 - [ ] Empty conveyor background video
 - [ ] Motion blur speed test video
 - [ ] Multiple simultaneous gloves video
 
 ### 🤖 Model Training
 
-- [x] Stage 1 — Glove detection — `mAP50: 0.994` *(completed)*
-- [x] Stage 2 — Left/Right classification (2-class YOLOv8n) — `mAP50: 0.980` *(completed)*
-- [ ] Stage 2b — Left/Right via YOLO11n-Pose landmarks *(in progress)*
-- [ ] Stage 3 — Label defect classifier (YOLO11n-cls)
+- [x] Stage 1 - Glove detection - `mAP50: 0.994` *(completed)*
+- [x] Stage 2 - Left/Right classification (2-class YOLOv8n) - `mAP50: 0.980` *(completed)*
+- [ ] Stage 2b - Left/Right via YOLO11n-Pose landmarks *(in progress)*
+- [ ] Stage 3 - Label defect classifier (YOLO11n-cls)
 - [ ] Verify left/right rule with 10 known samples each orientation
 - [ ] Validate pose model flip_idx or disable fliplr during training
 - [ ] Export all models to ONNX
@@ -273,21 +273,21 @@ label_roi (cropped wrist area)
 
 ### 💻 Software Pipeline
 
-- [x] `extract_frames.py` — video to frames *(completed)*
-- [x] `merge_datasets.py` — merge + remap class IDs *(completed)*
-- [x] `train_glove.py` — Stage 1 training *(completed)*
-- [x] `train_stage2.py` — Stage 2 fine-tuning *(completed)*
-- [x] `export_model.py` — ONNX export *(completed)*
-- [x] `laptop_detect.py` — live ONNX webcam inference *(completed)*
-- [x] `test_video.py` — video file inference with metrics *(completed)*
-- [ ] `filter_blur_duplicates.py` — blur + duplicate filtering
-- [ ] `split_dataset.py` — proper train/val/test split script
-- [ ] `augment_yolo_detect.py` — detection augmentation
-- [ ] `augment_classification.py` — label ROI augmentation
-- [ ] `crop_gloves_from_detector.py` — generate crops for landmark annotation
-- [ ] `label_roi_from_landmarks.py` — label ROI extraction using keypoints
-- [ ] `realtime_pipeline.py` — full 3-stage pipeline with SCARA queue
-- [ ] `scara_serial.py` — UART JSON command sender
+- [x] `extract_frames.py` - video to frames *(completed)*
+- [x] `merge_datasets.py` - merge + remap class IDs *(completed)*
+- [x] `train_glove.py` - Stage 1 training *(completed)*
+- [x] `train_stage2.py` - Stage 2 fine-tuning *(completed)*
+- [x] `export_model.py` - ONNX export *(completed)*
+- [x] `laptop_detect.py` - live ONNX webcam inference *(completed)*
+- [x] `test_video.py` - video file inference with metrics *(completed)*
+- [ ] `filter_blur_duplicates.py` - blur + duplicate filtering
+- [ ] `split_dataset.py` - proper train/val/test split script
+- [ ] `augment_yolo_detect.py` - detection augmentation
+- [ ] `augment_classification.py` - label ROI augmentation
+- [ ] `crop_gloves_from_detector.py` - generate crops for landmark annotation
+- [ ] `label_roi_from_landmarks.py` - label ROI extraction using keypoints
+- [ ] `realtime_pipeline.py` - full 3-stage pipeline with SCARA queue
+- [ ] `scara_serial.py` - UART JSON command sender
 
 ### 🔌 Hardware Integration
 
@@ -319,7 +319,7 @@ label_roi (cropped wrist area)
 
 ## 📊 Current Results
 
-### Stage 1 — Glove Detection
+### Stage 1 - Glove Detection
 
 | Metric | Value | Target |
 |--------|-------|--------|
@@ -327,10 +327,10 @@ label_roi (cropped wrist area)
 | mAP50-95 | **0.933** | ≥ 0.60 ✅ |
 | Precision | **0.933** | ≥ 0.85 ✅ |
 | Recall | **0.977** | ≥ 0.85 ✅ |
-| Training images | 302 | — |
-| Training time | ~50 sec (RTX 4050) | — |
+| Training images | 302 | - |
+| Training time | ~50 sec (RTX 4050) | - |
 
-### Stage 2 — Left/Right Classification
+### Stage 2 - Left/Right Classification
 
 | Class | mAP50 | Precision | Recall |
 |-------|-------|-----------|--------|
@@ -355,7 +355,7 @@ label_roi (cropped wrist area)
 
 ## 🐛 Known Issues & Fixes
 
-### Issue 1 — Domain Shift (ACTIVE — HIGH PRIORITY)
+### Issue 1 - Domain Shift (ACTIVE - HIGH PRIORITY)
 
 **What:** Model trained on portrait-oriented images (478×850px, gloves upright) performs poorly on test video where gloves appear in different orientation or angle.
 
@@ -386,9 +386,9 @@ print(frame.shape)  # should match training image dimensions
 
 ---
 
-### Issue 2 — NMS Double Detection (ACTIVE — HIGH PRIORITY)
+### Issue 2 - NMS Double Detection (ACTIVE - HIGH PRIORITY)
 
-**What:** Same glove is detected twice — once for the top half (classified as one hand) and once for the bottom half (classified as the other hand).
+**What:** Same glove is detected twice - once for the top half (classified as one hand) and once for the bottom half (classified as the other hand).
 
 **Symptom:** Two overlapping bounding boxes on same glove with different class labels. One of them typically has very low confidence (0.00–0.30).
 
@@ -396,11 +396,11 @@ print(frame.shape)  # should match training image dimensions
 
 **Fix:**
 ```python
-# Lower the IoU threshold — boxes that overlap more than 45% get merged
+# Lower the IoU threshold - boxes that overlap more than 45% get merged
 results = model(frame, conf=0.50, iou=0.45, verbose=False)[0]
 
 # Also filter out extremely low confidence detections
-# The 0.00 confidence box is a symptom — raising conf threshold removes it
+# The 0.00 confidence box is a symptom - raising conf threshold removes it
 results = model(frame, conf=0.55, iou=0.45, verbose=False)[0]
 ```
 
@@ -408,15 +408,15 @@ results = model(frame, conf=0.55, iou=0.45, verbose=False)[0]
 
 ---
 
-### Issue 3 — flip_idx Not Defined for Pose Model (PENDING — MEDIUM)
+### Issue 3 - flip_idx Not Defined for Pose Model (PENDING - MEDIUM)
 
-**What:** YOLO11n-Pose uses horizontal flip augmentation during training. For glove keypoints, flipping an image swaps left and right — which corrupts the left/right label if flip_idx is not correctly defined.
+**What:** YOLO11n-Pose uses horizontal flip augmentation during training. For glove keypoints, flipping an image swaps left and right - which corrupts the left/right label if flip_idx is not correctly defined.
 
 **Symptom:** Pose model trained with horizontal flip will have confused left/right logic.
 
 **Fix:**
 ```yaml
-# In training args — disable horizontal flip until flip_idx is verified
+# In training args - disable horizontal flip until flip_idx is verified
 fliplr: 0.0
 
 # OR define correct flip_idx in glove_pose.yaml
@@ -430,7 +430,7 @@ flip_idx: [0, 17, 18, 19, 20, 13, 14, 15, 16, 9, 10, 11, 12, 5, 6, 7, 8, 1, 2, 3
 
 ---
 
-### Issue 4 — Left/Right Rule Not Verified (PENDING — HIGH)
+### Issue 4 - Left/Right Rule Not Verified (PENDING - HIGH)
 
 **What:** The thumb-position rule for determining left vs right glove depends entirely on camera orientation and whether palm faces up or down. Hardcoding the wrong rule flips all classifications.
 
@@ -455,7 +455,7 @@ def verify_left_right_rule(kpts, known_label):
 
 ---
 
-### Issue 5 — Label ROI Magic Numbers Not Calibrated (PENDING — MEDIUM)
+### Issue 5 - Label ROI Magic Numbers Not Calibrated (PENDING - MEDIUM)
 
 **What:** The 21-keypoint label ROI extraction uses tunable constants that depend on physical setup.
 
@@ -469,11 +469,11 @@ ROI_H_FACTOR = 0.75   # may cut off label text
 
 **Fix:**
 ```python
-# Option A — Use 4 label-corner keypoints (kp 21-24)
+# Option A - Use 4 label-corner keypoints (kp 21-24)
 # Annotate the exact label corners during pose annotation
 # Gives direct, accurate ROI without tunable constants
 
-# Option B — Fixed bbox offset (simpler, works for consistent orientation)
+# Option B - Fixed bbox offset (simpler, works for consistent orientation)
 # Since camera is fixed top-down and gloves are always same orientation:
 def get_label_roi_from_bbox(frame, x1, y1, x2, y2):
     h = y2 - y1
@@ -491,7 +491,7 @@ def get_label_roi_from_bbox(frame, x1, y1, x2, y2):
 
 ---
 
-### Issue 6 — Raspberry Pi Storage Constraint (RESOLVED — DEFERRED)
+### Issue 6 - Raspberry Pi Storage Constraint (RESOLVED - DEFERRED)
 
 **What:** Pi 5 microSD card ran out of storage installing ultralytics + OpenCV + onnxruntime (~3 GB total).
 
@@ -499,13 +499,13 @@ def get_label_roi_from_bbox(frame, x1, y1, x2, y2):
 
 ---
 
-### Issue 7 — Size Classification Premature in Decision Logic (PENDING — LOW)
+### Issue 7 - Size Classification Premature in Decision Logic (PENDING - LOW)
 
 **What:** The decision tree includes `PICK_WRONG_SIZE` before size classification is trained or validated. This can cause false picks.
 
 **Fix:**
 ```python
-# In realtime_pipeline.py — gate size check behind a flag
+# In realtime_pipeline.py - gate size check behind a flag
 SIZE_CLASSIFICATION_ENABLED = False  # set True only after validation
 
 if SIZE_CLASSIFICATION_ENABLED and EXPECTED_BATCH_SIZE is not None:
@@ -545,10 +545,10 @@ if SIZE_CLASSIFICATION_ENABLED and EXPECTED_BATCH_SIZE is not None:
 | Order | Filename | Purpose |
 |-------|----------|---------|
 | 1 | `empty_conveyor.mp4` | Background, lighting, false detection test |
-| 2 | `left_good_normal.mp4` | Main pass class — left gloves, clean labels |
+| 2 | `left_good_normal.mp4` | Main pass class - left gloves, clean labels |
 | 3 | `left_good_varied.mp4` | Random placement, rotation, varied positions |
 | 4 | `right_wrong_orientation.mp4` | Wrong-hand detection dataset |
-| 5 | `left_label_defect.mp4` | Label defect examples — most important |
+| 5 | `left_label_defect.mp4` | Label defect examples - most important |
 | 6 | `right_label_defect.mp4` | Right glove with label defects |
 | 7 | `multiple_gloves.mp4` | Multi-object tracking + duplicate prevention |
 | 8 | `motion_blur_test.mp4` | Worst-case blur at conveyor speed |
@@ -563,23 +563,23 @@ if SIZE_CLASSIFICATION_ENABLED and EXPECTED_BATCH_SIZE is not None:
 | Label classifier | 150 defect + 150 non-defect | ~900 ROI crops | Balance classes 1:1 |
 | Size *(future)* | Known S/M/L/XL samples | Collect later | Do not rush |
 
-> ⚠️ **Critical:** Split real images into train/val/test FIRST. Augment ONLY the training set. Never augment val or test sets — they must represent real factory conditions.
+> ⚠️ **Critical:** Split real images into train/val/test FIRST. Augment ONLY the training set. Never augment val or test sets - they must represent real factory conditions.
 
 ### Annotation Rules
 
-**Dataset A — Glove Detection**
+**Dataset A - Glove Detection**
 - Draw tight box around each visible glove including all fingers and wrist
-- Do NOT use left/right as detector classes — landmarks decide handedness
+- Do NOT use left/right as detector classes - landmarks decide handedness
 - Include partially visible gloves at frame edges
 
-**Dataset B — Landmark Pose**
+**Dataset B - Landmark Pose**
 - Upload cropped gloves (output of `08_crop_gloves_from_detector.py`)
-- Annotate 21 keypoints per glove — thumb_tip (kp 4) is most critical
+- Annotate 21 keypoints per glove - thumb_tip (kp 4) is most critical
 - Optionally annotate 4 label corners (kp 21–24) for direct ROI crop
 - Annotate 50–80 manually → use Roboflow Label Assist for remainder
 
-**Dataset C — Label Defect**
-- Input: cropped label ROI only — not full glove frame
+**Dataset C - Label Defect**
+- Input: cropped label ROI only - not full glove frame
 - Classes: `non_defect` (0), `defect` (1)
 - Defect examples: ink smudge, missing characters, unclear print, bad ink
 - Balance classes as close to 1:1 as possible
@@ -604,7 +604,7 @@ if SIZE_CLASSIFICATION_ENABLED and EXPECTED_BATCH_SIZE is not None:
 
 ```
 Resolution : 1920 × 1080
-FPS        : 30 (minimum) — 60 preferred
+FPS        : 30 (minimum) - 60 preferred
 Shutter    : ≤ 4ms (prevents motion blur at 250mm/s belt)
 Mount height: 500–600mm above belt surface
 px/mm ratio: ~3.84 px/mm at 600mm height (calibrate with ruler)
@@ -619,7 +619,7 @@ px/mm ratio: ~3.84 px/mm at 600mm height (calibrate with ruler)
 git clone https://github.com/LGsekara1/Glove_Rejection_and_Inspection_Process_-GRIP-.git
 cd Glove_Rejection_and_Inspection_Process_-GRIP-/ML_implementation
 
-# Requires Python 3.11 (NOT 3.12+ — PyTorch wheels unavailable for 3.13+)
+# Requires Python 3.11 (NOT 3.12+ - PyTorch wheels unavailable for 3.13+)
 py -3.11 -m venv grip_env
 
 # Activate (Windows)
@@ -800,7 +800,7 @@ ML_implementation/
 
 ### Safety Rules
 
-- Always check `track_id` — send only **one** pick command per tracked glove
+- Always check `track_id` - send only **one** pick command per tracked glove
 - If no detection: no robot movement
 - Unclear/low-confidence objects: route to `manual_bin`, not `defect_bin`
 - Multiple gloves: each gets a separate `track_id` and queue entry
@@ -831,14 +831,14 @@ ML_implementation/
 | | AS5047P Magnetic Encoder | 2 | 873 | 1,746 |
 | | AS5600 Encoder Module | 2 | 400 | 800 |
 | | 3K Carbon Fibre Tube 20mm | 2 | 8,250 | 16,500 |
-| | Gears, Pullys, Belts | — | — | 3,600 |
+| | Gears, Pullys, Belts | - | - | 3,600 |
 | | Power Resistors | 1 | 1,069 | 1,069 |
 | | 6808 Thin Wall Bearings | 3 | 140 | 420 |
 | | Power Supply Unit | 1 | 2,780 | 2,780 |
 | | 2020 V-Slot Aluminium Extrusion | 1 | 2,000 | 2,000 |
-| | Miscellaneous (nuts, bolts, wires) | — | — | 5,000 |
+| | Miscellaneous (nuts, bolts, wires) | - | - | 5,000 |
 | | Screen | 1 | 1,950 | 1,950 |
-| | PCB Manufacturing + Components | — | — | 50,000 |
+| | PCB Manufacturing + Components | - | - | 50,000 |
 | | **SCARA Subtotal** | | | **119,813** |
 | **Pneumatic** | Regulator and Filter | 1 | 3,575 | 3,575 |
 | | BM52002s 5/2 Solenoid Valve | 1 | 9,985 | 9,985 |
@@ -846,7 +846,7 @@ ML_implementation/
 | | Suction Cup 3cm | 1 | 4,985 | 4,985 |
 | | Pneumatic Cylinder | 1 | 2,414 | 2,414 |
 | | Speed Controllers | 3 | 230 | 230 |
-| | Valves, Connectors, Wires | — | — | 7,000 |
+| | Valves, Connectors, Wires | - | - | 7,000 |
 | | Power Supply Unit | 1 | 2,780 | 2,780 |
 | | **Pneumatic Subtotal** | | | **34,225** |
 | **Computer Vision** | Industrial Camera | 1 | 20,000 | 20,000 |
@@ -865,8 +865,8 @@ ML_implementation/
 - [Ultralytics Image Classification](https://docs.ultralytics.com/tasks/classify/)
 - [MediaPipe Hand Landmarker](https://ai.google.dev/edge/mediapipe/solutions/vision/hand_landmarker)
 - [MediaPipe Hands Landmarks](https://mediapipe.readthedocs.io/en/latest/solutions/hands.html)
-- LeYOLO — Caron et al. 2024
-- Embedded YOLO — Feng et al. 2021
+- LeYOLO - Caron et al. 2024
+- Embedded YOLO - Feng et al. 2021
 
 ---
 
@@ -874,6 +874,6 @@ ML_implementation/
 
 **Group MOSFET · ENTC, University of Moratuwa · 2026**
 
-*GRIP — Glove Rejection and Inspection Process*
+*GRIP - Glove Rejection and Inspection Process*
 
 </div>
