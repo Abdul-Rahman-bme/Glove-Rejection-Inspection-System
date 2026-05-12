@@ -822,42 +822,6 @@ ML_implementation/
 
 ---
 
-## 💰 Bill of Materials
-
-| Category | Item | Qty | Unit (LKR) | Total (LKR) |
-|----------|------|-----|-----------|-------------|
-| **SCARA Arm** | BLDC Outrunner Motor | 2 | 9,410 | 18,820 |
-| | FOC-BLDC Servo Controller | 1 | 15,128 | 15,128 |
-| | AS5047P Magnetic Encoder | 2 | 873 | 1,746 |
-| | AS5600 Encoder Module | 2 | 400 | 800 |
-| | 3K Carbon Fibre Tube 20mm | 2 | 8,250 | 16,500 |
-| | Gears, Pullys, Belts | - | - | 3,600 |
-| | Power Resistors | 1 | 1,069 | 1,069 |
-| | 6808 Thin Wall Bearings | 3 | 140 | 420 |
-| | Power Supply Unit | 1 | 2,780 | 2,780 |
-| | 2020 V-Slot Aluminium Extrusion | 1 | 2,000 | 2,000 |
-| | Miscellaneous (nuts, bolts, wires) | - | - | 5,000 |
-| | Screen | 1 | 1,950 | 1,950 |
-| | PCB Manufacturing + Components | - | - | 50,000 |
-| | **SCARA Subtotal** | | | **119,813** |
-| **Pneumatic** | Regulator and Filter | 1 | 3,575 | 3,575 |
-| | BM52002s 5/2 Solenoid Valve | 1 | 9,985 | 9,985 |
-| | 3/2 Solenoid Valve | 1 | 3,256 | 3,256 |
-| | Suction Cup 3cm | 1 | 4,985 | 4,985 |
-| | Pneumatic Cylinder | 1 | 2,414 | 2,414 |
-| | Speed Controllers | 3 | 230 | 230 |
-| | Valves, Connectors, Wires | - | - | 7,000 |
-| | Power Supply Unit | 1 | 2,780 | 2,780 |
-| | **Pneumatic Subtotal** | | | **34,225** |
-| **Computer Vision** | Industrial Camera | 1 | 20,000 | 20,000 |
-| | Processing Unit (PC amortised) | 1 | 40,000 | 40,000 |
-| | **CV Subtotal** | | | **60,000** |
-| | | | **TOTAL** | **LKR 214,038** |
-
-**Suggested selling price:** LKR 650,000 – 800,000 (3× cost + installation + margin)
-
----
-
 ## 📚 References
 
 - [Ultralytics YOLO11 Documentation](https://docs.ultralytics.com/models/yolo11/)
