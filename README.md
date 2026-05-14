@@ -1,4 +1,4 @@
-# 🧤 GRIP - Glove Rejection and Inspection Process
+# 🧤 GRIP - Glove Rejection and Inspection Process (ON-GOING Project)
 
 <div align="center">
 
