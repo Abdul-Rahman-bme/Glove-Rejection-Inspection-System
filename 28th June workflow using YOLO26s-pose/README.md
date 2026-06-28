@@ -1,34 +1,5 @@
 # 🧤 GRIP - YOLO26s-Pose Workflow Experiment
 
-<div align="center">
-
-![GRIP Banner](https://img.shields.io/badge/GRIP-Glove%20Rejection%20%26%20Inspection%20Process-0D9488?style=for-the-badge&labelColor=0F172A)
-
-[![Status](https://img.shields.io/badge/Status-Pose%20MVP%20Experiment-F59E0B?style=flat-square)](.)
-[![Model](https://img.shields.io/badge/Model-YOLO26s--Pose-2563EB?style=flat-square)](.)
-[![Dataset](https://img.shields.io/badge/Dataset-52%20Pose%20Images-0D9488?style=flat-square)](.)
-[![Platform](https://img.shields.io/badge/Platform-Colab%20T4%20%2B%20Windows%20Test-7C3AED?style=flat-square)](.)
-[![University](https://img.shields.io/badge/ENTC-University%20of%20Moratuwa-1B3A6B?style=flat-square)](.)
-
-**GRIP - Glove Rejection and Inspection Process**  
-*YOLO-pose experiment for glove orientation and future robot rejection logic*
-
----
-
-### Group MOSFET · ENTC, University of Moratuwa · 2026
-
-| Index | Name |
-|-------|------|
-| 230212H | L.U.A. Gunasekara |
-| 230171E | C.D. Elapatha |
-| 230470U | T.S.R. Peiris |
-| 230318M | J.H.D. Kariyawasam |
-| 230507R | M.F.A. Rahman |
-
-</div>
-
----
-
 ## 📌 Purpose of This Folder
 
 This folder documents the **28th July workflow using YOLO26s-pose** for the GRIP project.
