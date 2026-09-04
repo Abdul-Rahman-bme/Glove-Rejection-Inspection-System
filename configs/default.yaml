@@ -1,0 +1,89 @@
+# All boxes use normalized full-frame coordinates: [x1, y1, x2, y2].
+# Calibrate on representative real frames before batch processing.
+detector:
+  # Color-agnostic default: belt-color distance + optional temporal motion.
+  # Use dark_contour only as a legacy fallback, or yolo for custom weights.
+  backend: belt_foreground
+  roi: [0.05, 0.05, 0.95, 0.95]
+  trigger_zone: [0.20, 0.15, 0.80, 0.85]
+  # A glove is eligible only after its entire detected box is inside this zone.
+  require_full_containment: true
+  # Optional extra clearance, as a fraction of trigger width/height.
+  trigger_inner_margin_ratio: 0.0
+  dark_threshold: 105
+  color_distance_threshold: 28.0
+  belt_sample_stride: 8
+  motion_assist: true
+  mog_history: 250
+  mog_var_threshold: 16.0
+  # Empty belt is a normal state: learn the belt during gaps and freeze while
+  # a plausible glove foreground is present. mog_learning_rate is the fallback
+  # used only when adaptive_background is false.
+  mog_learning_rate: -1.0
+  adaptive_background: true
+  mog_empty_learning_rate: 0.02
+  mog_foreground_learning_rate: 0.0
+  blur_kernel: 7
+  morph_kernel: 11
+  min_area_ratio: 0.015
+  max_area_ratio: 0.55
+  min_solidity: 0.35
+  # Choose your trained single-class segmentation checkpoint in the GUI.
+  # Do not use generic COCO yolo11n.pt as a glove detector.
+  yolo_model: ''
+  yolo_confidence: 0.35
+  yolo_class_id: null
+  yolo_device: auto
+  yolo_half: false
+  # A segmentation checkpoint retains polygons and uses mask-derived tight boxes.
+  yolo_use_masks: true
+  # Fail instead of falling back when a box-only checkpoint is loaded.
+  yolo_require_masks: false
+  yolo_imgsz: 640
+  yolo_iou: 0.50
+  yolo_max_det: 5
+  # Full-frame bbox area gate after ROI coordinates are restored; defaults disable filtering.
+  yolo_min_box_area_ratio: 0.0
+  yolo_max_box_area_ratio: 1.0
+  # False preserves historical whole-frame YOLO behavior; production can enable ROI-only inference.
+  yolo_crop_to_roi: false
+
+event:
+  min_detected_frames: 2
+  # The lightweight extractor tracks one well-spaced glove; do not guess when
+  # multiple candidates are visible in the same frame.
+  reject_multiple_detections: true
+  exit_missing_frames: 5
+  cooldown_frames: 8
+  max_track_distance_ratio: 0.20
+  crop_padding: 0.12
+  make_square: true
+  # Every exported training/deployment crop has identical pixel dimensions.
+  output_size: 256
+  # bbox preserves historical crops; masked modes require segmentation polygons.
+  crop_mode: bbox
+  save_masks: false
+  min_sharpness: 0.0
+  save_full_frames: false
+  # Frame timing preserves deterministic historical behavior. Live production may use time.
+  timing_mode: frames
+  min_detected_seconds: 0.08
+  exit_missing_seconds: 0.20
+  cooldown_seconds: 0.30
+  association_iou_weight: 0.25
+  association_mask_iou_weight: 0.0
+  # Conservative opt-in segmentation quality terms; calibrate on real videos.
+  quality_mask_area_weight: 0.0
+  quality_mask_stability_weight: 0.0
+  quality_boundary_clearance_weight: 0.0
+  quality_edge_penalty_weight: 0.0
+
+diagnostics:
+  show_masks: true
+  mask_alpha: 0.30
+
+runtime:
+  capture_queue_size: 2
+  detect_every_n_frames: 1
+  report_interval_seconds: 5.0
+  warmup: true
